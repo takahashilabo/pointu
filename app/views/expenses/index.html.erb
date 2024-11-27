@@ -1,0 +1,15 @@
+<h1>収支カレンダー</h1>
+<%= month_calendar do |date| %>
+  <div class="day">
+    <strong><%= date.day %></strong>
+    <% if @expenses[date] %>
+      <ul>
+        <% @expenses[date].each do |expense| %>
+          <li>
+            <%= expense.description %>: <%= expense.amount %>円
+          </li>
+        <% end %>
+      </ul>
+    <% end %>
+  </div>
+<% end %>

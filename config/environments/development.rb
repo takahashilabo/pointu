@@ -80,4 +80,5 @@ Rails.application.configure do
   # config.generators.apply_rubocop_autocorrect_after_generate!
   config.hosts << "73d45e238f834d1384e301512de4ef32.vfs.cloud9.us-east-1.amazonaws.com"
   config.hosts << "99d986028798414db8628449b2d50d9b.vfs.cloud9.us-east-1.amazonaws.com"
+  config.hosts << "0b4be92cf5a94c38935fcdf634cddb2a.vfs.cloud9.us-east-1.amazonaws.com"
 end

@@ -1,0 +1,18 @@
+<!-- app/views/expenses/new.html.erb -->
+<h1>新しい収支を追加</h1>
+
+<%= form_with(model: @expense, local: true) do |form| %>
+  <%= form.label :name %>
+  <%= form.text_field :name %>
+
+  <%= form.label :amount %>
+  <%= form.number_field :amount %>
+
+  <%= form.label :date %>
+  <%= form.date_field :date %>
+
+  <%= form.label :description %>
+  <%= form.text_area :description %>
+
+  <%= form.submit "収支を追加" %>
+<% end %>

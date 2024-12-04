@@ -19,6 +19,9 @@ gem "jbuilder"
 
 gem 'simple_calendar' # カレンダー表示用
 gem 'bootstrap', '~> 5.0.2'
+
+gem 'devise'
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", ">= 4.0.1"
 

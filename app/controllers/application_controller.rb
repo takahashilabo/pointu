@@ -1,4 +1,8 @@
+# app/controllers/application_controller.rb
 class ApplicationController < ActionController::Base
-  # Only allow modern browsers supporting webp images, web push, badges, import maps, CSS nesting, and CSS :has.
-  allow_browser versions: :modern
+  # 現在のユーザーを取得するメソッド
+  def current_user
+    # セッションからユーザーIDを取得し、それに基づくユーザーを返す（例）
+    @current_user ||= User.find(session[:user_id]) if session[:user_id]
+  end
 end

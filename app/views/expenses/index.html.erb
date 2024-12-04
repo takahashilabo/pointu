@@ -1,15 +1,22 @@
 <h1>収支カレンダー</h1>
+
 <%= month_calendar do |date| %>
   <div class="day">
     <strong><%= date.day %></strong>
-    <% if @expenses[date] %>
+
+    <% if @expenses && @expenses[date] %>  <!-- 日付ごとの収支がある場合 -->
       <ul>
         <% @expenses[date].each do |expense| %>
           <li>
-            <%= expense.description %>: <%= expense.amount %>円
+            <%= expense.name %>: <%= number_to_currency(expense.amount) %>
           </li>
         <% end %>
       </ul>
+    <% else %>
+      <p>収支なし</p>  <!-- 収支がない場合 -->
     <% end %>
+
+    <!-- 収支を追加するためのフォームへのリンク -->
+    <%= link_to "新規追加", new_expense_path(date: date), class: "btn btn-secondary btn-sm mt-2" %>
   </div>
 <% end %>

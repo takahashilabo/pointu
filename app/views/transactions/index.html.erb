@@ -1,0 +1,17 @@
+<p class="total-balance"><strong>Total Balance: </strong><%= number_to_currency(@total_balance) %></p>
+<%= month_calendar(year: @year, month: @month) do |date| %>
+  <div class="day">
+    <strong><%= date.day %></strong>
+    <div class="transactions">
+      <% @transactions.each do |transaction| %>
+        <% if transaction.date == date %>
+          <div class="transaction">
+            <span><%= transaction.description %></span> - 
+            <span><%= number_to_currency(transaction.amount) %></span> 
+            <span>(<%= transaction.transaction_type %>)</span>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+<% end %>

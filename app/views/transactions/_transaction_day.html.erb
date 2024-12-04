@@ -1,0 +1,12 @@
+<div class="day">
+  <strong><%= date.day %></strong>
+  <% transactions_for_day = transactions.select { |t| t.date == date } %>
+  
+  <% if transactions_for_day.any? %>
+    <ul>
+      <% transactions_for_day.each do |transaction| %>
+        <li><%= transaction.description %>: <%= format_transaction_amount(transaction.amount) %></li>
+      <% end %>
+    </ul>
+  <% end %>
+</div>

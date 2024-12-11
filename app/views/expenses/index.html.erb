@@ -1,22 +1,11 @@
-<h1>収支カレンダー</h1>
+<!-- app/views/expenses/index.html.erb -->
+<h1>Expenses</h1>
+<%= link_to 'Add Expense', new_expense_path, class: 'btn btn-primary' %>
 
-<%= month_calendar do |date| %>
-  <div class="day">
-    <strong><%= date.day %></strong>
-
-    <% if @expenses && @expenses[date] %>  <!-- 日付ごとの収支がある場合 -->
-      <ul>
-        <% @expenses[date].each do |expense| %>
-          <li>
-            <%= expense.name %>: <%= number_to_currency(expense.amount) %>
-          </li>
-        <% end %>
-      </ul>
-    <% else %>
-      <p>収支なし</p>  <!-- 収支がない場合 -->
-    <% end %>
-
-    <!-- 収支を追加するためのフォームへのリンク -->
-    <%= link_to "新規追加", new_expense_path(date: date), class: "btn btn-secondary btn-sm mt-2" %>
-  </div>
-<% end %>
+<ul>
+  <% @expenses.each do |expense| %>
+    <li>
+      <%= expense.name %>: <%= number_to_currency(expense.amount) %> - <%= expense.date %>
+    </li>
+  <% end %>
+</ul>

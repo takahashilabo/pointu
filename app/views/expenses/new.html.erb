@@ -1,18 +1,41 @@
-<!-- app/views/expenses/new.html.erb -->
 <h1>新しい収支を追加</h1>
 
-<%= form_with(model: @expense, local: true) do |form| %>
-  <%= form.label :name %>
-  <%= form.text_field :name %>
+<%= form_with(model: @expense, local: true, html: { class: 'form-horizontal' }) do |form| %>
+  <% if @expense.errors.any? %>
+    <div class="alert alert-danger">
+      <ul>
+        <% @expense.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
 
-  <%= form.label :amount %>
-  <%= form.number_field :amount %>
+  <div class="form-group">
+    <%= form.label :name, class: 'control-label' %>
+    <%= form.text_field :name, class: 'form-control' %>
+  </div>
 
-  <%= form.label :date %>
-  <%= form.date_field :date %>
+  <div class="form-group">
+    <%= form.label :amount, class: 'control-label' %>
+    <%= form.number_field :amount, class: 'form-control', step: 0.01 %> <!-- Added step for decimal values -->
+  </div>
 
-  <%= form.label :description %>
-  <%= form.text_area :description %>
+  <div class="form-group">
+    <%= form.label :date, class: 'control-label' %>
+    <%= form.date_field :date, class: 'form-control' %>
+  </div>
 
-  <%= form.submit "収支を追加" %>
+  <div class="form-group">
+    <%= form.label :description, class: 'control-label' %>
+    <%= form.text_area :description, class: 'form-control', rows: 3 %> <!-- Added rows for better text area appearance -->
+  </div>
+
+  <div class="form-group">
+    <%= form.submit "収支を追加", class: 'btn btn-primary' %>
+  </div>
+
+  <!-- Updated to link back to transactions index -->
+  <%= link_to 'Back to Transactions', transactions_path, class: 'btn btn-secondary' %>
+
 <% end %>

@@ -5,22 +5,21 @@
   <div class="day">
     <strong><%= date.day %></strong>
 
-    <!-- Display transactions for the current date -->
-    <div class="transactions">
-      <!-- Get the transactions for the current date from the grouped data -->
-      <% transactions_for_day = @transactions_by_date[date] || [] %>
+    <!-- Display expenses for the current date -->
+    <div class="expenses">
+      <!-- Get the expenses for the current date from the grouped data -->
+      <% expenses_for_day = @expenses_by_date[date] || [] %>
 
-      <% if transactions_for_day.any? %>
-        <% transactions_for_day.each do |transaction| %>
-          <div class="transaction">
-            <span><%= transaction.description %></span> - 
-            <span><%= number_to_currency(transaction.amount) %></span> 
-            <span>(<%= transaction.transaction_type %>)</span>
+      <% if expenses_for_day.any? %>
+        <% expenses_for_day.each do |expense| %>
+          <div class="expense">
+            <span><%= expense.description %></span> - 
+            <span><%= number_to_currency(expense.amount) %></span>
           </div>
         <% end %>
       <% else %>
-        <!-- Optional: Show a message when there are no transactions for the day -->
-        <p>No transactions for this day.</p>
+        <!-- Optional: Show a message when there are no expenses for the day -->
+        <p>No expenses for this day.</p>
       <% end %>
     </div>
   </div>

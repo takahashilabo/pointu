@@ -1,23 +1,42 @@
 <!DOCTYPE html>
-<html>
+<html lang="<%= I18n.locale == :ja ? 'ja' : 'en' %>">
   <head>
-    <title><%= content_for(:title) || "Shuhyo" %></title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>
+      <%= content_for?(:title) ? yield(:title) : (I18n.locale == :ja ? "収支管理 Shuhyo" : "Shuhyo") %>
+    </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="color-scheme" content="light dark">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= yield :head %>
 
-    <link rel="manifest" href="/manifest.json">
-    <link rel="icon" href="/icon.png" type="image/png">
-    <link rel="icon" href="/icon.svg" type="image/svg+xml">
+    <!-- Preload key resources -->
+    <link rel="manifest" href="/manifest.json" rel="preload">
+    <link rel="icon" href="/icon.png" type="image/png" rel="preload">
+    <link rel="icon" href="/icon.svg" type="image/svg+xml" rel="preload">
     <link rel="apple-touch-icon" href="/icon.png">
+    <link rel="mask-icon" href="/icon.svg" color="#5bbad5">
+
+    <!-- Stylesheets -->
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <!-- JavaScript -->
     <%= javascript_importmap_tags %>
   </head>
 
   <body>
-    <%= yield %>
+    <main>
+      <%= yield %>
+    </main>
+
+    <footer>
+      <p>
+        
+      </p>
+    </footer>
   </body>
 </html>

@@ -1,0 +1,10 @@
+<!-- app/views/expenses/show.html.erb -->
+<h1>Expense Details</h1>
+
+<p><strong>Date:</strong> <%= @expense.date %></p>
+<p><strong>Description:</strong> <%= @expense.description %></p>
+<p><strong>Amount:</strong> <%= number_to_currency(@expense.amount / 100.0, unit: "¥") %></p>
+<p><strong>Transaction Type:</strong> <%= @expense.transaction_type || "Not Specified" %></p>
+
+<%= link_to 'Edit', edit_expense_path(@expense), class: "btn btn-primary" %>
+<%= link_to 'Back to list', expenses_path, class: "btn btn-secondary" %>

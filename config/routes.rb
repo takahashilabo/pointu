@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
   devise_for :users
 
-  # Expenses routes (New, Create, Edit, Update)
-  resources :expenses, only: [:new, :create, :edit, :update] do
+  # Expenses routes (New, Create, Edit, Update, Destroy, Show)
+  resources :expenses, only: [:new, :create, :edit, :update, :destroy, :show] do
     collection do
-      get 'edit_by_date', to: 'expenses#edit_by_date'
-      patch 'update_by_date', to: 'expenses#update_by_date'
+      # Edit expenses for a specific day
+      get 'edit_day', to: 'expenses#edit_day'
+      # Update expenses for a specific day
+      patch 'update_day', to: 'expenses#update_day'
     end
   end
   

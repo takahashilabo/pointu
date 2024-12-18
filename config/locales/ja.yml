@@ -1,0 +1,7 @@
+ja:
+  app:
+    home: "ホーム"
+    transactions: "収支一覧"
+    add_transaction: "新しい収支を追加"
+    logout: "ログアウト"
+    copyright: "© 2024 Shuhyo. 全著作権所有。"

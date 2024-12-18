@@ -1,43 +1,33 @@
-<!-- app/views/expenses/edit.html.erb -->
-<h1>収支の編集</h1>
+<h1>Edit Expense: <%= @expense.name %></h1>
 
 <%= form_with(model: @expense, local: true) do |form| %>
-  <% if @expense.errors.any? %>
-    <div id="error_explanation" class="alert alert-danger">
-      <h2><%= pluralize(@expense.errors.count, "error") %> prohibited this expense from being saved:</h2>
-      <ul>
-        <% @expense.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
   <div class="form-group">
-    <%= form.label :name, class: 'control-label' %>
-    <%= form.text_field :name, class: 'form-control' %> <!-- ここでnameフィールドを追加 -->
+    <%= form.label :name, 'Name', class: 'control-label' %>
+    <%= form.text_field :name, class: 'form-control' %>
   </div>
 
   <div class="form-group">
-    <%= form.label :amount, class: 'control-label' %>
+    <%= form.label :amount, 'Amount', class: 'control-label' %>
     <%= form.number_field :amount, class: 'form-control' %>
   </div>
 
   <div class="form-group">
-    <%= form.label :date, class: 'control-label' %>
-    <%= form.date_field :date, class: 'form-control' %>
-  </div>
-
-  <div class="form-group">
-    <%= form.label :description, class: 'control-label' %>
+    <%= form.label :description, 'Description', class: 'control-label' %>
     <%= form.text_area :description, class: 'form-control' %>
   </div>
 
   <div class="form-group">
-    <%= form.submit "更新する", class: 'btn btn-primary' %>
+    <%= form.label :date, 'Date', class: 'control-label' %>
+    <%= form.date_field :date, class: 'form-control' %>
   </div>
 
   <div class="form-group">
-    <%= link_to '戻る', expenses_path, class: 'btn btn-secondary' %>
+    <%= form.label :transaction_type, 'Transaction Type', class: 'control-label' %>
+    <%= form.select :transaction_type, [['Income', 'Income'], ['Expense', 'Expense']], {}, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.submit 'Update Expense', class: 'btn btn-primary' %>
+    <%= link_to 'Cancel', expense_path(@expense), class: 'btn btn-secondary' %>
   </div>
 <% end %>

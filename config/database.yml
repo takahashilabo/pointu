@@ -30,11 +30,10 @@ test:
 production:
   <<: *default
   # database: path/to/persistent/storage/production.sqlite3
-  adapter: postgresql
-  encoding: unicode
-  pool: 5
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
   database: pointu
   username: pointu
   password: <%= ENV['MYSITE_DATABASE_PASSWORD'] %>
   url: <%= ENV['DATABASE_URL'] %>
-

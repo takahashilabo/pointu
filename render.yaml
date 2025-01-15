@@ -1,12 +1,12 @@
 databases:
-  - name: shuhyo
-    databaseName: shuhyo
-    user: shuhyo_user
+  - name: pointu
+    databaseName: pointu
+    user: pointu
     plan: free
 
 services:
   - type: web
-    name: shuhyo
+    name: pointu
     runtime: ruby
     plan: free
     buildCommand: "./bin/render-build.sh"
@@ -15,7 +15,7 @@ services:
     envVars:
       - key: DATABASE_URL
         fromDatabase:
-          name: shuhyo
+          name: pointu
           property: connectionString
       - key: RAILS_MASTER_KEY
         sync: false
